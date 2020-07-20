@@ -55,7 +55,7 @@ module Fastlane
         if tag.empty?
           UI.message("First commit of the branch is taken as a begining of next release")
           # If there is no tag found we taking the first commit of current branch
-          hash = Actions.sh('git rev-list --max-parents=0 HEAD', log: params[:debug]).chomp
+          hash = Actions.sh('git rev-list --max-count=1 --max-parents=0 HEAD', log: params[:debug]).chomp
         else
           # Tag's format is v2.3.4-5-g7685948
           # See git describe man page for more info
